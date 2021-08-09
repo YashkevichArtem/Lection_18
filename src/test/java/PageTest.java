@@ -1,11 +1,14 @@
 import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.ElementsCollection;
 import org.junit.jupiter.api.*;
+import pages.Buying;
+import pages.LoginPage;
 
 import java.io.IOException;
 
 import static com.codeborne.selenide.Selenide.closeWebDriver;
 import static com.codeborne.selenide.Selenide.elements;
+
 
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
 class PageTest {
@@ -74,9 +77,6 @@ class PageTest {
         buyPage.cartList.shouldBe(Condition.visible);
         ElementsCollection itemsCollection = buyPage.cartList.$$("button");
         int itemsSizeBefore = itemsCollection.size();
-        //Тут я рад бы был критике по поводу двух следующих строк кода ниже, так как мне кажется,
-        //что это не совсем разумно использовать first() или last().
-        //Буду рад подсказке :)
         itemsCollection.first().click();
         itemsCollection.first().click();
         int itemsSizeAfter = itemsCollection.size();
@@ -104,9 +104,6 @@ class PageTest {
         Buying buyPage = new Buying();
         String stringTotalPrice = buyPage.itemTotalPrice.getText().replace("Item total: $","");
         Double doubleTotalPrice = Double.parseDouble(stringTotalPrice);
-        //Тут так же у меня проблема, я добавил два товара и использую .first() и .last(), но если товаров
-        //будет три или более я не выполню тест. Я не смогу выбрать допустим второй товар из трёх.
-        //Очень нуждаюсь в подсказке, искал ответ на свой вопрос, гуглил, смотрел ютуб, но к сожалению ничего...
         String stringFirstInventoryItemPrice = elements("div.inventory_item_price").first().getText().replace("$","");
         String stringLastInventoryItemPrice = elements("div.inventory_item_price").last().getText().replace("$","");
         Double doubleFirstInventoryItemPrice = Double.parseDouble(stringFirstInventoryItemPrice);
@@ -114,4 +111,9 @@ class PageTest {
         double doubleFirstAndLastPrice = doubleFirstInventoryItemPrice + doubleLastInventoryItemPrice;
         Assertions.assertEquals(doubleTotalPrice, doubleFirstAndLastPrice);
     }
+
 }
+
+
+
+

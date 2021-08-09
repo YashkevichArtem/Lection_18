@@ -1,3 +1,5 @@
+package pages;
+
 import com.codeborne.selenide.SelenideElement;
 
 import java.io.FileInputStream;
@@ -7,12 +9,12 @@ import java.util.Properties;
 import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.Selenide.open;
 
-public class LoginPage extends BasePage{
+public class LoginPage extends BasePage {
     SelenideElement usernameField = $("#user-name");
     SelenideElement passwordField = $("#password");
     SelenideElement loginButton = $("#login-button");
 
-    void login() throws IOException {
+    public void login() throws IOException {
         Properties log = new Properties();
         log.load(new FileInputStream("src/main/resources/log.inf"));
         usernameField.sendKeys(log.getProperty("us.username"));
@@ -22,6 +24,5 @@ public class LoginPage extends BasePage{
     }
 
     public void openLoginPage(){
-        open("https://www.saucedemo.com/");
-    }
+        open("https://www.saucedemo.com/"); }
 }
