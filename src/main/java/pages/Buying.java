@@ -1,6 +1,7 @@
 package pages;
 
 import com.codeborne.selenide.SelenideElement;
+import io.qameta.allure.Step;
 
 import static com.codeborne.selenide.Selenide.$;
 
@@ -19,6 +20,7 @@ public class Buying {
     public SelenideElement cartList = $("div.cart_list");
     public SelenideElement itemTotalPrice = $("div.summary_subtotal_label");
 
+    @Step("Set user name fields")
     public void setUserName(){
         Buying buyPage = new Buying();
         buyPage.firstnameField.sendKeys("First");
