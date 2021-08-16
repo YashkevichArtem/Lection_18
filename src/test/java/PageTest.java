@@ -34,6 +34,7 @@ class PageTest {
     @Link("http://qwerty.com")
     @Order(1)
     @Test
+    @Step("Welcome message")
     public void loginTest() throws IOException{
         LoginPage loginPage = new LoginPage();
         loginPage.openLoginPage();
@@ -42,11 +43,11 @@ class PageTest {
         Assertions.assertEquals("PRODUCTS", loginPage.welcomeMessage.getText());
     }
 
-//    @Severity(SeverityLevel.CRITICAL)
-//    @Description("Buying test")
-//    @Feature("Buy item")
-//    @Issue("93784")
-//    @Link("http://asdas.com")
+    @Severity(SeverityLevel.CRITICAL)
+    @Description("Buying test")
+    @Feature("Buy item")
+    @Issue("93784")
+    @Link("http://asdas.com")
     @Order(2)
     @Test
     public void buyingTest() throws IOException{
@@ -63,11 +64,11 @@ class PageTest {
         Assertions.assertEquals("THANK YOU FOR YOUR ORDER", buyPage.completeMessage.getText());
     }
 
-//    @Severity(SeverityLevel.MINOR)
-//    @Description("Cancel test")
-//    @Feature("Cancel buy items")
-//    @Issue("93337")
-//    @Link("http://zxcvb.com")
+    @Severity(SeverityLevel.MINOR)
+    @Description("Cancel test")
+    @Feature("Cancel buy items")
+    @Issue("93337")
+    @Link("http://zxcvb.com")
     @Order(3)
     @Test
     public void cancelBuying() throws IOException{
@@ -83,11 +84,11 @@ class PageTest {
         loginPage.welcomeMessage.shouldBe(Condition.visible);
         Assertions.assertEquals("PRODUCTS", loginPage.welcomeMessage.getText());
     }
-//    @Severity(SeverityLevel.TRIVIAL)
-//    @Description("Remove test")
-//    @Feature("Remove all items from cartlist")
-//    @Issue("343411")
-//    @Link("http://dependence.com")
+    @Severity(SeverityLevel.TRIVIAL)
+    @Description("Remove test")
+    @Feature("Remove all items from cartlist")
+    @Issue("343411")
+    @Link("http://dependence.com")
     @Order(4)
     @Test
     public void removeItems() throws IOException{
@@ -109,11 +110,11 @@ class PageTest {
         System.out.println("Товаров после их удаления из корзины: " + itemsSizeAfter);
     }
 
-//    @Severity(SeverityLevel.NORMAL)
-//    @Description("Total price")
-//    @Feature("Check total price")
-//    @Issue("311111")
-//    @Link("http://wear.com")
+    @Severity(SeverityLevel.NORMAL)
+    @Description("Total price")
+    @Feature("Check total price")
+    @Issue("311111")
+    @Link("http://wear.com")
     @Order(5)
     @Test
     public void sumPrice() throws IOException{
