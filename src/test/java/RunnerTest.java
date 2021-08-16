@@ -11,6 +11,6 @@ import org.junit.runner.RunWith;
         //dryRun = true,
         snippets = CucumberOptions.SnippetType.CAMELCASE)
 
-class Runner {
+class RunnerTest {
 
 }
